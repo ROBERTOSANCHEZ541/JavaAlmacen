@@ -1,0 +1,22 @@
+CREATE OR REPLACE PROCEDURE VerificarLogin(
+    IN p_Nombre VARCHAR(50),
+    IN p_RFCDesencriptado VARCHAR(200),
+    OUT p_Resultado VARCHAR(20)
+)
+AS $$
+DECLARE
+    v_RFCEncriptado VARCHAR(200);
+BEGIN
+    SELECT pgp_sym_decrypt(RFC::BYTEA, 'R0bert541')::VARCHAR INTO v_RFCEncriptado
+    FROM Empleado
+    WHERE Nombre = p_Nombre
+    LIMIT 1;
+
+    IF v_RFCEncriptado IS NOT NULL AND TRIM(LOWER(v_RFCEncriptado)) = TRIM(LOWER(p_RFCDesencriptado)) THEN
+        -- Login exitoso
+        p_Resultado := 'EXITOSO';
+    ELSE
+        -- Credenciales inválidas
+        p_Resultado := 'INVALIDO';
+    END IF;
+END $$ LANGUAGE plpgsql;

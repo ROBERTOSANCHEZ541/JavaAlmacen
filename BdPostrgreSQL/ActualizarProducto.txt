@@ -1,0 +1,20 @@
+CREATE OR REPLACE PROCEDURE ActualizarProducto(
+    p_IdArticulo INT,
+    p_NombreProducto VARCHAR(255),  -- Cambiado a VARCHAR para reflejar el cambio de NVARCHAR a VARCHAR
+    p_Precio DECIMAL(10, 2),
+    p_Stock INT,
+    p_Descripcion TEXT,
+    p_IDCategoria INT,
+    p_IDSucursal INT
+) AS $$
+BEGIN
+    UPDATE Productos
+    SET 
+        NombreProducto = p_NombreProducto,
+        Precio = p_Precio,
+        Stock = p_Stock,
+        Descripcion = p_Descripcion,
+        ID_Categoria = p_IDCategoria,
+        IDSucursal = p_IDSucursal
+    WHERE IdArticulo = p_IdArticulo;
+END $$ LANGUAGE plpgsql;

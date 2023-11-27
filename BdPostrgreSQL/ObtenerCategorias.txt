@@ -1,0 +1,6 @@
+CREATE PROCEDURE ObtenerCategorias()
+AS $$
+BEGIN
+SELECT id_Categoria, Tipo_Categoria
+    FROM Categoria;
+END$$ LANGUAGE plpgsql;

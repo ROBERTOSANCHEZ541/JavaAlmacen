@@ -1,0 +1,7 @@
+CREATE OR REPLACE PROCEDURE InsertarCategoria(
+    p_TipoCategoria VARCHAR(15)
+) AS $$
+BEGIN
+    INSERT INTO Categoria (Tipo_Categoria)
+    VALUES (p_TipoCategoria);
+END $$ LANGUAGE plpgsql;

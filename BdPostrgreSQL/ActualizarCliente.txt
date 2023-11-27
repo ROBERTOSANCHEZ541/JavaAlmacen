@@ -1,0 +1,11 @@
+CREATE OR REPLACE PROCEDURE ActualizarCliente(
+    p_IdCliente INT,
+    p_Nombre VARCHAR(50),
+    p_Email VARCHAR(255),
+    p_Telefono VARCHAR(10)
+) AS $$
+BEGIN
+    UPDATE Cliente
+    SET Nombre = p_Nombre, Email = p_Email, Telefono = p_Telefono
+    WHERE IdCliente = p_IdCliente;
+END $$ LANGUAGE plpgsql;

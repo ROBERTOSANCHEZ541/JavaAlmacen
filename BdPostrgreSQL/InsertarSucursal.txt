@@ -1,0 +1,11 @@
+CREATE OR REPLACE PROCEDURE InsertarSucursal(
+    IN p_NombreSucursal VARCHAR(100),
+    IN p_Direccion VARCHAR(255),
+    IN p_Ciudad VARCHAR(50),
+    IN p_CodigoPostal VARCHAR(10),
+    IN p_Telefono VARCHAR(15)
+) AS $$
+BEGIN
+    INSERT INTO Sucursales (NombreSucursal, Direccion, Ciudad, CodigoPostal, Telefono)
+    VALUES (p_NombreSucursal, p_Direccion, p_Ciudad, p_CodigoPostal, p_Telefono);
+END $$ LANGUAGE plpgsql;

@@ -1,0 +1,16 @@
+CREATE OR REPLACE PROCEDURE ActualizarTransporte(
+    p_IDTransporte INT,
+    p_Nombre VARCHAR(100),
+    p_Tipo VARCHAR(50),
+    p_CapacidadKg INT,
+    p_NumeroPlaca VARCHAR(20)
+) AS $$
+BEGIN
+    UPDATE Transporte
+    SET 
+        Nombre = p_Nombre,
+        Tipo = p_Tipo,
+        CapacidadKg = p_CapacidadKg,
+        NumeroPlaca = p_NumeroPlaca
+    WHERE IDTransporte = p_IDTransporte;
+END $$ LANGUAGE plpgsql;

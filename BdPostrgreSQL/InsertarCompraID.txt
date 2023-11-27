@@ -1,0 +1,15 @@
+CREATE OR REPLACE PROCEDURE InsertarCompraID(
+    p_FechaCompra VARCHAR(10),
+    p_ProveedorID INT,
+    p_EmpleadoID INT,
+    OUT p_UltimoID INT
+) AS $$
+DECLARE
+    nuevo_id INT;
+BEGIN
+    INSERT INTO Compras (FechaCompra, ProveedorID, EmpleadoID)
+    VALUES (p_FechaCompra, p_ProveedorID, p_EmpleadoID)
+    RETURNING CompraID INTO nuevo_id;
+    
+    p_UltimoID := nuevo_id;
+END $$ LANGUAGE plpgsql;

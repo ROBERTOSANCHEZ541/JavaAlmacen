@@ -1,0 +1,16 @@
+CREATE OR REPLACE PROCEDURE ActualizarProveedor(
+    p_IdProveedor INT,
+    p_Nombre VARCHAR(50),
+    p_Telefono VARCHAR(10),
+    p_Direccion VARCHAR(100),
+    p_RFC CHAR(13)
+) AS $$
+BEGIN
+    UPDATE Proveedor
+    SET 
+        Nombre = p_Nombre,
+        Telefono = p_Telefono,
+        Direccion = p_Direccion,
+        RFC = p_RFC
+    WHERE IdProveedor = p_IdProveedor;
+END $$ LANGUAGE plpgsql;

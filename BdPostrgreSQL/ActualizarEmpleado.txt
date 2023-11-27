@@ -1,0 +1,24 @@
+CREATE OR REPLACE PROCEDURE ActualizarEmpleado(
+    p_IdEmpleado INT,
+    p_Nombre VARCHAR(50),
+    p_Edad INT,
+    p_RFC VARCHAR(50),  -- Cambiado a VARCHAR para reflejar el cambio de NVARCHAR a VARCHAR
+    p_Telefono VARCHAR(10),
+    p_CURP VARCHAR(18),
+    p_NSS CHAR(11),
+    p_Puesto VARCHAR(100),  -- Cambiado a VARCHAR para reflejar el cambio de NVARCHAR a VARCHAR
+    p_IDSucursal INT
+) AS $$
+BEGIN
+    UPDATE Empleado
+    SET
+        Nombre = p_Nombre,
+        Edad = p_Edad,
+        RFC = MD5(p_RFC),  -- Utilizando MD5 como ejemplo de función de hash, puedes elegir otras funciones de hash seguras
+        Telefono = p_Telefono,
+        CURP = p_CURP,
+        NSS = p_NSS,
+        Puesto = p_Puesto,
+        IDSucursal = p_IDSucursal
+    WHERE IdEmpleado = p_IdEmpleado;
+END $$ LANGUAGE plpgsql;

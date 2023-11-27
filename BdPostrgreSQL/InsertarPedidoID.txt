@@ -1,0 +1,14 @@
+CREATE OR REPLACE PROCEDURE InsertarPedidoID(
+    IN p_FechaPedido VARCHAR(10),
+    IN p_ClienteID INT,
+    OUT p_UltimoID INT
+) AS $$
+DECLARE
+    nuevo_id INT;
+BEGIN
+    INSERT INTO Pedidos (FechaPedido, ClienteID)
+    VALUES (p_FechaPedido, p_ClienteID)
+    RETURNING PedidoID INTO nuevo_id;
+
+    p_UltimoID := nuevo_id;
+END $$ LANGUAGE plpgsql;

@@ -1,0 +1,7 @@
+CREATE OR REPLACE PROCEDURE EliminarTransporte(
+    p_IDTransporte INT
+) AS $$
+BEGIN
+    DELETE FROM Transporte
+    WHERE IDTransporte = p_IDTransporte;
+END $$ LANGUAGE plpgsql;

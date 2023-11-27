@@ -1,0 +1,7 @@
+CREATE OR REPLACE PROCEDURE EliminarEmpleado(
+    p_IdEmpleado INT
+) AS $$
+BEGIN
+    DELETE FROM Empleado
+    WHERE IdEmpleado = p_IdEmpleado;
+END $$ LANGUAGE plpgsql;

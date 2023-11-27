@@ -1,0 +1,11 @@
+CREATE OR REPLACE PROCEDURE InsertarCliente(
+    p_Nombre VARCHAR(50),
+    p_Email VARCHAR(255),
+    p_Telefono VARCHAR(10),
+    OUT p_NuevoID INT
+) AS $$
+BEGIN
+    INSERT INTO Cliente (Nombre, Email, Telefono)
+    VALUES (p_Nombre, p_Email, p_Telefono)
+    RETURNING IdCliente INTO p_NuevoID;
+END $$ LANGUAGE plpgsql;

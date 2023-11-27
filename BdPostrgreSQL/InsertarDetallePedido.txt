@@ -1,0 +1,11 @@
+CREATE OR REPLACE PROCEDURE InsertarDetallePedido(
+    p_PedidoID INT,
+    p_ProductoID INT,
+    p_IDTransporte INT,
+    p_Cantidad INT,
+    p_PrecioUnitario DECIMAL(10, 2)
+) AS $$
+BEGIN
+    INSERT INTO DetallesPedido (PedidoID, ProductoID, IDTransporte, Cantidad, PrecioUnitario)
+    VALUES (p_PedidoID, p_ProductoID, p_IDTransporte, p_Cantidad, p_PrecioUnitario);
+END $$ LANGUAGE plpgsql;
